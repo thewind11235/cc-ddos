@@ -10,4 +10,7 @@
     python3 cc.py
     
     tmux new-session -d -s "ddos1" && tmux send-keys -t "ddos1:0" "python3 cc.py" Enter
+
+## Fast
     
+    cd cc-ddos && tmux new-session -d -s "ddos1" && tmux send-keys -t "ddos1:0" "python3 cc.py" Enter

